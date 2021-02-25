@@ -1,6 +1,11 @@
+import org.apache.commons.lang3.StringUtils;
+
 public class StringCalculator {
 
     public int add(String numbers) {
-        return 0;
+        if (StringUtils.isEmpty(numbers)) {
+            return 0;
+        }
+        return 1;
     }
 }
