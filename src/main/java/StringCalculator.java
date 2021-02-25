@@ -18,18 +18,26 @@ public class StringCalculator {
             return Integer.parseInt(numbers);
         }
         String delimeter = ",";
+        List<String> delimeters = new ArrayList<>();
         int substringIndex = 0;
+        String regex= ",|\n";
         if (numbers.startsWith("//")) {
             delimeter = numbers.charAt(2) + "";
             substringIndex = 4;
             Pattern p = Pattern.compile("\\[(.*?)\\]");
             Matcher m = p.matcher(numbers);
             while (m.find()) {
-                delimeter = m.group(1);
+                delimeters.add(m.group(1));
                 substringIndex = numbers.indexOf("\n") + 1;
             }
+            if(delimeters.size() == 0) {
+                regex = "[" + delimeter + "|,|\n]";
+            } else {
+                String delimetersRegex = delimeters.toString().trim().replaceAll(",", "|");
+                regex = "[" + delimetersRegex + "|,|\n]";
+            }
         }
-        String[] digits = numbers.substring(substringIndex).split("[" + delimeter + "|,|\n]");
+        String[] digits = numbers.substring(substringIndex).split(regex);
         int sum = 0, number;
         List<Integer> illegalNumbers = new ArrayList<>();
         boolean hasNegatives = false;

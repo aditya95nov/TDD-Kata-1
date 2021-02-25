@@ -64,7 +64,7 @@ class StringCalculatorTest {
     @Test
     void should_return_called_count_for_add() {
         StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(12, stringCalculator.getCalledCount());
+        assertEquals(13, stringCalculator.getCalledCount());
     }
 
     @Test
@@ -77,5 +77,11 @@ class StringCalculatorTest {
     void should_return_sum_with_delimeter_of_more_length() {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(6, stringCalculator.add("//[***]\n1***2***3"));
+    }
+
+    @Test
+    void should_return_sum_with_multiple_delimeters() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.add("//[*][%]\n1*2%3"));
     }
 }
