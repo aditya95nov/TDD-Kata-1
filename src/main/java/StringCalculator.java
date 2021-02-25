@@ -29,6 +29,8 @@ public class StringCalculator {
             if (number < 0) {
                 illegalNumbers.add(number);
                 hasNegatives = true;
+            } else if (number > 1000) {
+                continue;
             }
             sum += number;
         }
