@@ -49,7 +49,15 @@ class StringCalculatorTest {
     void should_throw_exception_for_negative_numbers() {
         final StringCalculator stringCalculator = new StringCalculator();
         assertThrows(IllegalArgumentException.class
-                , () -> stringCalculator.add("1, -2, 3, 4"));
+                , () -> stringCalculator.add("1,-2,3,4"));
+
+    }
+
+    @Test
+    void should_throw_exception_for_negative_numbers_and_return_all_negative_numbers() {
+        final StringCalculator stringCalculator = new StringCalculator();
+        assertThrows(IllegalArgumentException.class
+                , () -> stringCalculator.add("1,-2,3,4,-5,6"));
 
     }
 }

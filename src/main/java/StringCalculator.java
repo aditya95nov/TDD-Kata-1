@@ -1,5 +1,8 @@
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
 
     public int add(String numbers) {
@@ -16,12 +19,18 @@ public class StringCalculator {
         }
         String[] digits = numbers.substring(substringIndex).split(delimeter + "|,|\n");
         int sum = 0, number;
+        List<Integer> illegalNumbers = new ArrayList<>();
+        boolean hasNegatives = false;
         for (String d : digits) {
             number = Integer.parseInt(d);
             if (number < 0) {
-                throw new IllegalArgumentException("negatives not allowed - " + number);
+                illegalNumbers.add(number);
+                hasNegatives = true;
             }
             sum += number;
+        }
+        if (hasNegatives) {
+            throw new IllegalArgumentException("negatives not allowed - " + illegalNumbers);
         }
         return sum;
     }
