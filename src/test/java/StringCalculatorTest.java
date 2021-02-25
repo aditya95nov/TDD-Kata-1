@@ -64,12 +64,18 @@ class StringCalculatorTest {
     @Test
     void should_return_called_count_for_add() {
         StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(11, stringCalculator.getCalledCount());
+        assertEquals(12, stringCalculator.getCalledCount());
     }
 
     @Test
     void should_ignore_numbers_greater_than_1000() {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(15, stringCalculator.add("1\n2,3,4,5,1001"));
+    }
+
+    @Test
+    void should_return_sum_with_delimeter_of_more_length() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.add("//[***]\n1***2***3"));
     }
 }
