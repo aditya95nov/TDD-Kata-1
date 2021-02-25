@@ -5,7 +5,10 @@ import java.util.List;
 
 public class StringCalculator {
 
+    private static int calledCount = 0;
+
     public int add(String numbers) {
+        calledCount++;
         if (StringUtils.isEmpty(numbers)) {
             return 0;
         } else if (numbers.length() == 1) {
@@ -33,5 +36,9 @@ public class StringCalculator {
             throw new IllegalArgumentException("negatives not allowed - " + illegalNumbers);
         }
         return sum;
+    }
+
+    public int getCalledCount() {
+        return calledCount;
     }
 }
