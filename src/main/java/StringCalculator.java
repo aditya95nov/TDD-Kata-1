@@ -15,9 +15,13 @@ public class StringCalculator {
             substringIndex = 4;
         }
         String[] digits = numbers.substring(substringIndex).split(delimeter + "|,|\n");
-        int sum = 0;
+        int sum = 0, number;
         for (String d : digits) {
-            sum += Integer.parseInt(d);
+            number = Integer.parseInt(d);
+            if (number < 0) {
+                throw new IllegalArgumentException("negatives not allowed - " + number);
+            }
+            sum += number;
         }
         return sum;
     }

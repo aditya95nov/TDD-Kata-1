@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
 
@@ -41,6 +42,14 @@ class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(15, stringCalculator.add("1\n2,3,4,5"));
         assertEquals(10, stringCalculator.add("//;\n1,2\n3,4"));
+
+    }
+
+    @Test
+    void should_throw_exception_for_negative_numbers() {
+        final StringCalculator stringCalculator = new StringCalculator();
+        assertThrows(IllegalArgumentException.class
+                , () -> stringCalculator.add("1, -2, 3, 4"));
 
     }
 }
