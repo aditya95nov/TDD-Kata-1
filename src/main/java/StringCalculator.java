@@ -8,9 +8,15 @@ public class StringCalculator {
         } else if (numbers.length() == 1) {
             return Integer.parseInt(numbers);
         }
-        String[] digits = numbers.split(",|\n");
+        char delimeter = ',';
+        int substringIndex = 0;
+        if (numbers.startsWith("//")) {
+            delimeter = numbers.charAt(2);
+            substringIndex = 4;
+        }
+        String[] digits = numbers.substring(substringIndex).split(delimeter + "|,|\n");
         int sum = 0;
-        for(String d : digits) {
+        for (String d : digits) {
             sum += Integer.parseInt(d);
         }
         return sum;

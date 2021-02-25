@@ -35,4 +35,12 @@ class StringCalculatorTest {
         assertEquals(10, stringCalculator.add("1,2\n3,4"));
 
     }
+
+    @Test
+    void should_return_sum_of_N_numbers_with_new_delimeter() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(15, stringCalculator.add("1\n2,3,4,5"));
+        assertEquals(10, stringCalculator.add("//;\n1,2\n3,4"));
+
+    }
 }
