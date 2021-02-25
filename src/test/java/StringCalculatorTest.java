@@ -21,4 +21,10 @@ class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3, stringCalculator.add("1,2"));
     }
+
+    @Test
+    void should_return_sum_of_N_numbers() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(15, stringCalculator.add("1,2,3,4,5"));
+    }
 }
