@@ -1,7 +1,6 @@
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +19,7 @@ public class StringCalculator {
         String delimeter = ",";
         List<String> delimeters = new ArrayList<>();
         int substringIndex = 0;
-        String regex= ",|\n";
+        String regex = ",|\n";
         if (numbers.startsWith("//")) {
             delimeter = numbers.charAt(2) + "";
             substringIndex = 4;
@@ -30,7 +29,7 @@ public class StringCalculator {
                 delimeters.add(m.group(1));
                 substringIndex = numbers.indexOf("\n") + 1;
             }
-            if(delimeters.size() == 0) {
+            if (delimeters.size() == 0) {
                 regex = "[" + delimeter + "|,|\n]";
             } else {
                 String delimetersRegex = delimeters.toString().trim().replaceAll(",", "|");
@@ -42,7 +41,7 @@ public class StringCalculator {
         List<Integer> illegalNumbers = new ArrayList<>();
         boolean hasNegatives = false;
         for (String d : digits) {
-            if(StringUtils.isBlank(d)) {
+            if (StringUtils.isBlank(d)) {
                 continue;
             }
             number = Integer.parseInt(d);
